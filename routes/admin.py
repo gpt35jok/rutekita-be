@@ -6,6 +6,10 @@ from utils.password import hash_password
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
+@bp.route("/", methods=["GET"])
+def index():
+    return jsonify({"msg": "halo rute kita"})
+
 @bp.route("/petugas", methods=["POST"])
 @jwt_required()
 def add_petugas():
