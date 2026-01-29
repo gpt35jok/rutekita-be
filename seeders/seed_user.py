@@ -7,7 +7,7 @@ sys.path.append(BASE_DIR)
 from app import app
 from extensions import db
 from models.user import User
-from werkzeug.security import generate_password_hash
+from utils import hash_password
 
 def run_seed():
     with app.app_context():
@@ -16,7 +16,7 @@ def run_seed():
         if not admin_exist:
             admin = User(
                 username="admin",
-                password=generate_password_hash("admin123"),
+                password=hash_password("admin123"),
                 role="admin"
             )
             db.session.add(admin)
@@ -27,7 +27,7 @@ def run_seed():
         if not petugas_exist:
             petugas = User(
                 username="petugas",
-                password=generate_password_hash("petugas123"),
+                password=hash_password("petugas123"),
                 role="petugas"
             )
             db.session.add(petugas)
