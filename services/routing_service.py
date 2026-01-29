@@ -1,29 +1,27 @@
 from extensions import db
-import time
 from sqlalchemy import text
+import time
 
 def dijkstra_route(start_lon, start_lat, end_lon, end_lat):
     start_time = time.time()
 
-    query = """
-    SELECT * FROM pgr_dijkstra(
-        'SELECT id, source, target, cost FROM ways',
-        (
-            SELECT id FROM ways_vertices_pgr
-            ORDER BY the_geom <-> ST_SetSRID(ST_Point(%s, %s), 4326)
-            LIMIT 1
-        ),
-        (
-            SELECT id FROM ways_vertices_pgr
-            ORDER BY the_geom <-> ST_SetSRID(ST_Point(%s, %s), 4326)
-            LIMIT 1
-        ),
-        directed := false
-    );
-    """
-
     result = db.session.execute(
-        text(query),
+        text("""
+            SELECT * FROM pgr_dijkstra(
+                'SELECT id, source, target, cost FROM ways',
+                (
+                    SELECT id FROM ways_vertices_pgr
+                    ORDER BY the_geom <-> ST_SetSRID(ST_Point(:start_lon, :start_lat), 4326)
+                    LIMIT 1
+                ),
+                (
+                    SELECT id FROM ways_vertices_pgr
+                    ORDER BY the_geom <-> ST_SetSRID(ST_Point(:end_lon, :end_lat), 4326)
+                    LIMIT 1
+                ),
+                directed := false
+            );
+        """),
         {
             "start_lon": start_lon,
             "start_lat": start_lat,
