@@ -1,1 +1,8 @@
-POST https://untotaled-oxidizable-marlena.ngrok-free.dev/
+### LOGIN
+POST https://untotaled-oxidizable-marlena.ngrok-free.dev/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
