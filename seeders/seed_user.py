@@ -7,7 +7,7 @@ sys.path.append(BASE_DIR)
 from app import app
 from extensions import db
 from models.user import User
-from utils import hash_password
+from utils.password import hash_password
 
 def run_seed():
     with app.app_context():
