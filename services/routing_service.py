@@ -1,5 +1,6 @@
 from extensions import db
 import time
+from sqlalchemy import text
 
 def dijkstra_route(start_lon, start_lat, end_lon, end_lat):
     start_time = time.time()
@@ -21,10 +22,15 @@ def dijkstra_route(start_lon, start_lat, end_lon, end_lat):
     );
     """
 
-    result = db.session.execute(query, (
-        start_lon, start_lat,
-        end_lon, end_lat
-    )).fetchall()
+    result = db.session.execute(
+        text(query),
+        {
+            "start_lon": start_lon,
+            "start_lat": start_lat,
+            "end_lon": end_lon,
+            "end_lat": end_lat
+        }
+    ).fetchall()
 
     exec_time = time.time() - start_time
 

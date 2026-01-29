@@ -6,3 +6,15 @@ Content-Type: application/json
   "username": "admin",
   "password": "admin123"
 }
+
+### DIJKSTRA ROUTE JAKARTA
+POST https://untotaled-oxidizable-marlena.ngrok-free.dev/route/dijkstra
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2OTY5MzQwNiwianRpIjoiOTQzNzZlZGItYzIwMi00YmNhLWI0ODktYmJmZmRjMDVjNzVhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6NSwicm9sZSI6ImFkbWluIn0sIm5iZiI6MTc2OTY5MzQwNiwiY3NyZiI6ImQ3MzUxZmE0LTA3MWQtNDI3Yy1iNDVlLTkzOWVkODFkNzNlNiIsImV4cCI6MTc2OTY5NDMwNn0.4rNGBBaBnBjjB6vPk5hnGyO3uQ7kXLgjFnzDXmwTl9o
+Content-Type: application/json
+
+{
+  "start_lon": 106.8272,
+  "start_lat": -6.1754,
+  "end_lon": 106.8230,
+  "end_lat": -6.1944
+}
