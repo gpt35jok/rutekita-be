@@ -13,8 +13,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsI
 Content-Type: application/json
 
 {
-  "start_lon": 106.8272,
-  "start_lat": -6.1754,
-  "end_lon": 106.8230,
-  "end_lat": -6.1944
+  "start_lon": 106.8062,
+  "start_lat": -6.2555,
+  "end_lon": 106.7986,
+  "end_lat": -6.2442
 }

@@ -33,6 +33,16 @@ def dijkstra_route(start_lon, start_lat, end_lon, end_lat):
     exec_time = time.time() - start_time
 
     return {
-        "execution_time": exec_time,
-        "path_nodes": len(result)
-    }
+            "status": "success",
+            "execution_time": exec_time,
+            "path_nodes": len(result),
+            "route": [
+                {
+                    "seq": row[0],      # Urutan langkah
+                    "node": row[1],     # ID Titik (Vertex)
+                    "edge": row[2],     # ID Jalan (GID dari tabel ways)
+                    "cost": row[3],     # Beban/Jarak di ruas ini
+                    "agg_cost": row[4]  # Total biaya sampai titik ini
+                } for row in result
+            ]
+        }
