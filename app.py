@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {
     "origins": "*", 
     "methods": ["GET", "POST", "OPTIONS"],
-    "allow_headers": ["Content-Type", "Authorization"]
+    "allow_headers": ["Content-Type", "Authorization", "ngrok-skip-browser-warning"]
 }})
 app.config.from_object("config.Config")
 
