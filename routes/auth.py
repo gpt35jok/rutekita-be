@@ -18,5 +18,12 @@ def login():
     )
 
     return jsonify({
-        "access_token": token, "user":user
+        "access_token": token, 
+        "user": {
+            "id": user.id,
+            "name": user.username, # atau user.name sesuai kolom DB kamu
+            "email": user.email,
+            "role": user.role,
+            "status": "active" # tambahkan field yang dibutuhkan React User type
+        }
     })
