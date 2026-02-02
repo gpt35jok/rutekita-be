@@ -17,4 +17,6 @@ def login():
         identity={"id": user.id, "role": user.role}
     )
 
-    return jsonify(access_token=token, user=user)
+    return jsonify({
+        "access_token": token, "user":user
+    })
