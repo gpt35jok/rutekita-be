@@ -8,7 +8,7 @@ def dijkstra_route(start_lon, start_lat, end_lon, end_lat):
     result = db.session.execute(
         text("""
             SELECT * FROM pgr_dijkstra(
-                'SELECT source, target, cost FROM ways',
+               'SELECT gid AS id, source, target, cost FROM ways',
                 (
                     SELECT id FROM ways_vertices_pgr
                     ORDER BY the_geom <-> ST_SetSRID(ST_Point(:start_lon, :start_lat), 4326)
