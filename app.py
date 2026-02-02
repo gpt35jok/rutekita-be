@@ -1,8 +1,14 @@
 from flask import Flask
 from extensions import db, jwt
 from routes import auth, admin, routing
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {
+    "origins": "*", 
+    "methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"]
+}})
 app.config.from_object("config.Config")
 
 db.init_app(app)
