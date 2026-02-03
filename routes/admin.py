@@ -6,7 +6,7 @@ from utils.password import hash_password
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
-@bp.route("/petugas", methods=["POST"])
+@bp.route("/users", methods=["POST"])
 @jwt_required()
 def add_petugas():
     current = get_jwt_identity()

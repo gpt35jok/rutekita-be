@@ -18,3 +18,8 @@ Content-Type: application/json
   "end_lon": 106.7986,
   "end_lat": -6.2442
 }
+
+### Rquest GET Users
+GET https://untotaled-oxidizable-marlena.ngrok-free.dev/admin/users
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MDA3ODEyNSwianRpIjoiNDRmMjFlZjAtMWRkMy00ZjlmLWE1NzUtNjg3OTE2MzFmYjdkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6NSwicm9sZSI6ImFkbWluIn0sIm5iZiI6MTc3MDA3ODEyNSwiY3NyZiI6ImZlZWZmMGRjLTRiMTctNGY0Yi1hOWI2LWRmYmVkMDA2YWI4YiIsImV4cCI6MTc3MDA3OTAyNX0.E-naTl9xq7J3A4A9x-haAhVzy54Axt9zz6CsKi1eqzo
+Content-Type: application/json
