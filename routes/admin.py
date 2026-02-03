@@ -25,3 +25,27 @@ def add_petugas():
     db.session.commit()
 
     return jsonify({"msg": "Petugas berhasil ditambahkan"})
+
+@bp.route("/users", methods=["GET"])
+@jwt_required()
+def get_all_users():
+    current = get_jwt_identity()
+
+    # hanya admin yang boleh akses
+    if current["role"] != "admin":
+        return jsonify({"msg": "Akses ditolak"}), 403
+
+    users = User.query.all()
+
+    result = []
+    for user in users:
+        result.append({
+            "id": user.id,
+            "username": user.username,
+            "role": user.role
+        })
+
+    return jsonify({
+        "msg": "Berhasil mengambil data user",
+        "data": result
+    }), 200
