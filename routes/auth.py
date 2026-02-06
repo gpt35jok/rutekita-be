@@ -10,6 +10,8 @@ def login():
     data = request.json
 
     user = User.query.filter_by(email=data["email"]).first()
+    print(user)
+    print(verify_password(data["password"], user.password));
     if not user or not verify_password(data["password"], user.password):
         return jsonify({"msg": "Login gagal"}), 401
 
@@ -28,9 +30,10 @@ def login():
             "status": "active" # tambahkan field yang dibutuhkan React User type
         }
     })
+
 @bp.route("/register", methods=["POST"])
 def register():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     # validasi input dasar
     if not data.get("username") or not data.get("email") or not data.get("password"):
