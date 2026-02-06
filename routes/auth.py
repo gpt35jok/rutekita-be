@@ -23,6 +23,7 @@ def login():
             "id": user.id,
             "name": user.username, # atau user.name sesuai kolom DB kamu
             "username": user.username,
+            "email": user.email,
             "role": user.role,
             "status": "active" # tambahkan field yang dibutuhkan React User type
         }
