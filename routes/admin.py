@@ -18,6 +18,7 @@ def add_petugas():
 
     user = User(
         username=data["username"],
+        email=data["email"],
         password=hash_password(data["password"]),
         role="petugas"
     )
