@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
 from models.user import User
 from utils.password import verify_password, hash_password
+from extensions import db
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -11,7 +12,7 @@ def login():
 
     user = User.query.filter_by(email=data["email"]).first()
     print(user)
-    print(verify_password(data["password"], user.password));
+    print(verify_password(data["password"], user.password))
     if not user or not verify_password(data["password"], user.password):
         return jsonify({"msg": "Login gagal"}), 401
 
@@ -60,6 +61,9 @@ def register():
         password=hash_password(data["password"]),
         role=data.get("role", "petugas")  # default role user
     )
+
+    db.session.add(user)
+    db.session.commit()
 
     return jsonify({
         "user": {
