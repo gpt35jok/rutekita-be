@@ -16,6 +16,7 @@ def run_seed():
         if not admin_exist:
             admin = User(
                 username="admin",
+                email="admin@mail.com",
                 password=hash_password("admin123"),
                 role="admin"
             )
@@ -27,6 +28,7 @@ def run_seed():
         if not petugas_exist:
             petugas = User(
                 username="petugas",
+                email="petugas@mail.com",
                 password=hash_password("petugas123"),
                 role="petugas"
             )
