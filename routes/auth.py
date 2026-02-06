@@ -9,7 +9,7 @@ bp = Blueprint("auth", __name__, url_prefix="/auth")
 def login():
     data = request.json
 
-    user = User.query.filter_by(eamil=data["eamil"]).first()
+    user = User.query.filter_by(email=data["email"]).first()
     if not user or not verify_password(data["password"], user.password):
         return jsonify({"msg": "Login gagal"}), 401
 
