@@ -65,11 +65,17 @@ def register():
     db.session.add(user)
     db.session.commit()
 
+    token = create_access_token(
+        identity={"id": user.id, "role": user.role}
+    )
+
     return jsonify({
+        "access_token": token,
         "user": {
             "id": user.id,
             "name": user.username,
             "username": user.username,
+            "email": user.email,
             "role": user.role,
             "status": "active"
         }
